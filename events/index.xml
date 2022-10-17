@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Events on</title><link>https://bytecodealliance.github.io/wamr.dev/events/</link><description>Recent content in Events on</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 10 Oct 2022 18:50:29 +0000</lastBuildDate><atom:link href="https://bytecodealliance.github.io/wamr.dev/events/index.xml" rel="self" type="application/rss+xml"/><item><title>WebAssembly Open Day</title><link>https://bytecodealliance.github.io/wamr.dev/events/webassembly-open-day/</link><pubDate>Wed, 12 Oct 2022 21:27:24 +0800</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/events/webassembly-open-day/</guid><description>活动嘉宾 # 王鑫 # Intel 技术经理 杨斌 # 蚂蚁集团技术总监 《字节码联盟与 WAMR 开源社区进展介绍》 # 嘉宾简介： # 王鑫
+任职英特尔公司，关注计算机语言与运行引擎，可信计算和物联网等技术领域。开发与创建开源项目 WebAssembly Micro Runtime, 参与推动英特尔、微软、Mozilla 等公司成立字节码联盟 (Bytecode-Alliance)，任字节码联盟技术管理委员会(TSC)成员。
+杨斌
+花名：凯撒，蚂蚁集团技术总监，关注操作系统，计算机语言与运行引擎等技术领域。
+Till Schneidereit
+字节码联盟董事会主席
+Ralph Squillace
+微软高级总监
+字节码联盟董事会成员
+《蚂蚁集团 WASM 编译器虚拟机基础能力建设》 # 嘉宾简介： # 汤伟
+一直从事编译器和虚拟机相关工作，2020年11月加入蚂蚁金服，主导webassembly相关工具链的设计与开发。
+议题简介
+作为面向蚂蚁的 wasm 编译器、虚拟机基础平台团队，面向蚂蚁 wasm 用户核心诉求，针对开发效率、性能提升以及生态拓展，确定 wasm 编译器、虚拟机上的技术选型，探索未来编译器、虚拟机协同设计空间。
+听众收益
+了解wasm在蚂蚁的业务场景中的需求和我们的编译器、虚拟机技术能力建设上的一些探索。
+《WebAssembly Micro Runtime 开源技术解析与展望》 # 嘉宾简介： # 何良
+INTEL 资深软件工程师， WAMR开源项目核心开发者
+议题简介
+主要介绍 WebAssembly Micro Runtime(WAMR) 的技术特性，发展历程以及路线图。面对嵌入式设备独特的资源条件和使用场景，WAMR进行了有针对性的特性开发，比如选用不同的运行模式适应不同的资源水平，利用XIP在文件系统中直接执行，在RUNTIME中支持 Sensor API 等。此外，WAMR努力打造高效的开发环境，提供源码级调试的功能框架和VSCODE插件。目前，支持高级语言（比如JAVA,KOTLIN等）和SOCKET APIs的功能开发正在有序展开。</description></item></channel></rss>

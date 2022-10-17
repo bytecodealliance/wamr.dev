@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bytecodealliance.github.io/wamr.dev/sitemap.xml
