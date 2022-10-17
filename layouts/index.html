@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 text-center">
+      <h1 class="mt-0">{{ .Title }}</h1>
+    </div>
+    <div class="col-lg-16 col-xl-18 text-center">
+      <p class="lead">{{ .Params.lead | safeHTML }}</p>
+      <p>A <a href="https://bytecodealliance.org/">Bytecode Alliance</a> project</p>
+      <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/build_wamr.md" role="button">{{ i18n "get-started" }}</a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+  <section class="section section-sm">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-5">
+          <h2 class="h4">Small runtime size</h2>
+          <p>~85K for interpreter and ~50K for AoT</p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">LLVM based AOT and JIT ⚡️</h2>
+          <p>Achieve near to native speed</p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Self-implemented AOT loader</h2>
+          <p>AoT working on Linux, Windows, MacOS, Android, SGX and MCU</p>
+        </div>
+      </div>
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-5">
+          <h2 class="h4">Intel SGX support</h2>
+          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/linux_sgx.md">Go to doc</a>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Source debugging support</h2>
+          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/source_debugging.md">Go to doc</a>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Berkeley/Posix Socket support</h2>
+          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/socket_api.md">Go to doc</a>
+          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/tree/main/samples/socket-api">Go to sample</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<section class="section section-sm container-fluid">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-9">
+      {{- .Content -}}
+    </div>
+  </div>
+</section>
+{{ end }}
