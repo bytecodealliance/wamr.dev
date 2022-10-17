@@ -11,31 +11,31 @@ description = "WebAssembly Micro Runtime (WAMR) is a lightweight standalone WebA
 ## Open Graph
 images = ["wamr.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+# domainTLD = "doks.netlify.app"
+titleHome = "wamr.dev"
 
 ## Twitter Cards
-twitterSite = "@getdoks"
-twitterCreator = "@henkverlinde"
+# twitterSite = "@getdoks"
+# twitterCreator = "@henkverlinde"
 
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaAuthorGitHub = "https://github.com/h-enk"
+schemaName = "WAMR"
+# schemaAuthor = "Henk Verlinde"
+# schemaAuthorTwitter = "https://twitter.com/henkverlinde"
+# schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
+# schemaAuthorGitHub = "https://github.com/h-enk"
 schemaLocale = "en-US"
 schemaLogo = "logo-doks.png"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
-schemaImage = "doks.png"
+schemaImage = "wamr.png"
 schemaImageWidth = 1280
 schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getdoks"
+# schemaTwitter = "https://twitter.com/getdoks"
 schemaLinkedIn = ""
-schemaGitHub = "https://github.com/h-enk/doks"
+schemaGitHub = "https://github.com/bytecodealliance/wamr.dev"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
