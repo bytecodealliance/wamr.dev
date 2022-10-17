@@ -3,8 +3,10 @@ name: github pages
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -20,7 +22,7 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
-        
+
       - name: Install npm dependencies
         run: npm install
 
@@ -29,7 +31,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
