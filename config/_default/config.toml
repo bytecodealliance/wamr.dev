@@ -1,4 +1,4 @@
-baseurl = "https://bytecodealliance.github.io/wamr.dev"
+baseurl = "https://bytecodealliance.github.io/wamr.dev/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
