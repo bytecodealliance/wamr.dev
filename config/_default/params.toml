@@ -9,7 +9,7 @@ description = "WebAssembly Micro Runtime (WAMR) is a lightweight standalone WebA
 ## Documentation
 
 ## Open Graph
-images = ["doks.png"]
+images = ["wamr.png"]
 ogLocale = "en_US"
 domainTLD = "doks.netlify.app"
 titleHome = "Doks Theme"
