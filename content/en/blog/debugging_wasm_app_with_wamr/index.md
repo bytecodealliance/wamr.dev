@@ -385,7 +385,9 @@ The problem happens when the application is built with `wasi` mode and exported 
 - lldb send a allocate memory request to runtime (debug server)
 - runtime will invoke the `malloc` function in wasm application (which means we need to re-enter the interpreter), but at this moment the interpreter is at stop state and waiting debugger's signal to continue execution, which cause the program to hang.
 
-![](debugger_hang.excalidraw.png)
+<div style="text-align: center">
+<img src="debugger_hang.excalidraw.png"/>
+</div>
 
 To solve this problem, we try to reserve enough memory space in linear memory during loading, and if the runtime failed to allocate this buffer during loading, a warning will be displayed:
 
