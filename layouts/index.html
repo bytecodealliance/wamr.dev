@@ -1,13 +1,12 @@
 {{ define "main" }}
 <section class="section container-fluid mt-n3 pb-3">
   <div class="row justify-content-center">
-    <div class="col-lg-16 text-center">
-      <h1 class="mt-0">{{ .Title }}</h1>
+    <div class="col-lg-16">
+      <h2 class="mt-0">{{ .Title }}</h2>
     </div>
-    <div class="col-lg-16 col-xl-18 text-center">
+    <div class="col-lg-16 col-xl-18">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
       <p>A <a href="https://bytecodealliance.org/">Bytecode Alliance</a> project</p>
-      <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/build_wamr.md" role="button">{{ i18n "get-started" }}</a>
     </div>
   </div>
 </section>
@@ -16,34 +15,29 @@
 {{ define "sidebar-prefooter" }}
   <section class="section section-sm">
     <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          <h2 class="h4">Small runtime size</h2>
-          <p>~85K for interpreter and ~50K for AoT</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">LLVM based AOT and JIT ⚡️</h2>
-          <p>Achieve near to native speed</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Self-implemented AOT loader</h2>
-          <p>AoT working on Linux, Windows, MacOS, Android, SGX and MCU</p>
-        </div>
+      <div class="row justify-content-center">
+        <h4>Features</h4>
+        <hr class="border border-primary border-1 opacity-75">
+            <h2 class="h5">Small runtime size</h2>
+            <p>~85K for interpreter and ~50K for AoT</p>
+            <h2 class="h5">LLVM based AOT and JIT ⚡️</h2>
+            <p>Achieve near to native speed</p>
+            <h2 class="h5">Universal AOT loader</h2>
+            <p>AoT working on Linux, Windows, MacOS, Android, SGX and MCU</p>
+            <h2 class="h5">TEE support (SGX/TDX)</h2>
+            <h2 class="h5">Source debugging support</h2>
+            <h2 class="h5">Library support (wasi-libc/builtin-libc/socket/pthread/wasi-nn)</h2>
+
       </div>
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          <h2 class="h4">Intel SGX support</h2>
-          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/linux_sgx.md">Go to doc</a>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Source debugging support</h2>
-          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/source_debugging.md">Go to doc</a>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Berkeley/Posix Socket support</h2>
-          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/doc/socket_api.md">Go to doc</a>
-          <a class="btn btn-primary px-4 mb-2" href="https://github.com/bytecodealliance/wasm-micro-runtime/tree/main/samples/socket-api">Go to sample</a>
-        </div>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container">
+      <div class="row justify-content-center">
+        <h4>Why WAMR?</h4>
+        <hr class="border border-primary border-1 opacity-75">
+
       </div>
     </div>
   </section>
@@ -59,7 +53,7 @@
               <div class="col-md-16">
                 <div class="card-body">
                   <article>
-                    <h2 class="h3"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
+                    <h2 class="h5"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
                     <p>{{ .Params.excerpt | safeHTML }}</p>
                     <br/>
                     {{ partial "main/blog-meta.html" . -}}
@@ -69,6 +63,7 @@
             </div>
           </div>
         {{ end}}
+        <a href="#">More ...</a>
       </div>
     </div>
   </section>
@@ -84,7 +79,7 @@
               <div class="col-md-16">
                 <div class="card-body">
                   <article>
-                    <h2 class="h3"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
+                    <h2 class="h5"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
                     {{ partial "main/event-meta.html" . -}}
                     <br/>
                     <br/>
