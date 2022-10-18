@@ -12,6 +12,8 @@ tags: ['IoT', 'Embedded']
 contributors: ['Wang Xin']
 pinned: false
 homepage: false
+event_date: "2022/1/14"
+event_location: "Virtual Event (Linux Summit)"
 ---
 
 <style>

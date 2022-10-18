@@ -12,6 +12,8 @@ tags: ['envoy']
 contributors: ['Xu Jun']
 pinned: false
 homepage: false
+event_date: "2022/5/16"
+event_location: "Virtual Event (Cloud Native Wasm Day)"
 ---
 
 <style>

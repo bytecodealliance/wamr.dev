@@ -1,5 +1,5 @@
 ---
-title: "WebAssembly Open Day"
+title: "WebAssembly Open Day (CHN)"
 description: "WebAssembly Open Day"
 excerpt: "WebAssembly Open Day"
 date: 2022-10-12T21:27:24+08:00
