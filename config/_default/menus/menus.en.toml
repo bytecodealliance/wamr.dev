@@ -1,17 +1,13 @@
-[[main]]
-  name = "Docs"
-  url = "https://github.com/bytecodealliance/wasm-micro-runtime"
-  weight = 10
 
 [[main]]
   name = "Blog"
   url = "/blog/"
-  weight = 20
+  weight = 10
 
 [[main]]
   name = "Events"
   url = "/events/"
-  weight = 30
+  weight = 20
 
 [[social]]
   name = "GitHub"

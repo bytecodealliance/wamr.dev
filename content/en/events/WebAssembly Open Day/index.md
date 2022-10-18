@@ -1,7 +1,7 @@
 ---
 title: "WebAssembly Open Day"
-description: "Introducing WAMR blog system, review the content to be displayed and the writing && publishing flow"
-excerpt: "Introducing WAMR blog system, review the content to be displayed and the writing && publishing flow"
+description: "WebAssembly Open Day"
+excerpt: "WebAssembly Open Day"
 date: 2022-10-12T21:27:24+08:00
 lastmod: 2022-10-12T21:27:24+08:00
 draft: false
@@ -27,18 +27,18 @@ iframe {
 
 # 活动嘉宾
 
-               
 
-## 王鑫              
+
+## 王鑫
 
 - Intel 技术经理
 
 
-## 杨斌  
+## 杨斌
 
 - 蚂蚁集团技术总监
 
-              
+
 
 ### 《字节码联盟与 WAMR 开源社区进展介绍》
 
@@ -83,7 +83,7 @@ iframe {
 了解wasm在蚂蚁的业务场景中的需求和我们的编译器、虚拟机技术能力建设上的一些探索。
 
 <iframe src="//player.bilibili.com/player.html?aid=295027328&bvid=BV1NF411B79W&cid=466908725&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-               
+
 
 ### 《WebAssembly Micro Runtime 开源技术解析与展望》
 

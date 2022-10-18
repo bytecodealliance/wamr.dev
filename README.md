@@ -48,6 +48,8 @@ All the blogs should put under `content/en/blog/`
 
 - using hugo for local preview
 
+  > install hugo firstly, see the installation guide in [site-development section](#site-development)
+
   ``` bash
   # create new blog
   hugo new content/en/blog/<article_name>/index.md
@@ -124,27 +126,34 @@ For site maintainer, please follow this guide to setup development environment.
     For ubuntu you can use snap:
 
     ``` bash
-    sudo snap install hugo
+    snap install hugo --channel=extended
+    ```
+
+    If snap install failed, we can also try the released deb package
+
+    ``` bash
+    wget https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_linux-amd64.deb
+    sudo dpkg -i hugo_extended_0.104.3_linux-amd64.deb
     ```
 
 2. install dependencies
 
-``` bash
-npm install
-```
+    ``` bash
+    npm install
+    ```
 
 3. launch dev server
 
-``` bash
-npm run dev
-# This will launch a server and serve the blog as localhost:1313
-```
+    ``` bash
+    npm run dev
+    # This will launch a server and serve the blog as localhost:1313
+    ```
 
 4. generate static site
 
-``` bash
-hugo --minify
-```
+    ``` bash
+    hugo --minify
+    ```
 
 5. deployment
 

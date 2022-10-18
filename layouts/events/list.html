@@ -6,7 +6,7 @@
   </div>
 </div>
 <style>
-  #evet_card:hover {
+  #event_card:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23);
   }
 </style>
@@ -14,7 +14,7 @@
   {{ $paginator := .Paginate (.Data.Pages) -}}
   {{ range $paginator.Pages -}}
   <div class="col">
-    <div class="card" id="evet_card">
+    <div class="card" id="event_card">
       <div class="row">
         <div class="col-md-6">
           {{- .Scratch.Set "fillImage" "auto" -}}
