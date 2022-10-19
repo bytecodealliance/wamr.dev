@@ -1,6 +1,6 @@
 ---
-title: "Webassembly key features and future roadmap (CHN)"
-description: "Webassembly key features and future roadmap"
+title: "Webassembly key features and future development (CHN)"
+description: "Webassembly key features and future development"
 excerpt: ""
 date: 2022-10-19T07:38:37+08:00
 lastmod: 2022-10-19T07:38:37+08:00
@@ -13,7 +13,7 @@ contributors: ['Xu Jun']
 pinned: false
 homepage: false
 event_date: "2022/4/15"
-event_location: "Beijing"
+event_location: "Virtual Event (DIVE 全球基础软件创新大会)"
 ---
 
 
@@ -26,7 +26,7 @@ event_location: "Beijing"
 
 &emsp;&emsp;WebAssembly (简称Wasm)是目前备受关注的一门新的计算机语言，本演讲从计算机语言技术的角度解析WebAssembly的语言特性，以及WebAssembly为应用提供安全沙箱机制的原理。我们将介绍WebAssembly在浏览器以外的主要应用场景和其带来的价值，以及目前W3C正在定义中的一些主要特性及其对未来的影响。
 
-&emsp;&emsp;本文整理自英特尔中国有限公司高级技术经理王鑫在DIVE全球基础软件创新大会 2022的演讲分享，主题为“WebAssembly的核心语言特性与未来发展”。
+&emsp;&emsp;本文整理自英特尔中国有限公司高级技术经理王鑫在[DIVE全球基础软件创新大会 2022](https://dive.infoq.cn/2022/beijing)的演讲分享，主题为“WebAssembly的核心语言特性与未来发展”。
 
 &emsp;&emsp;分享主要分为七个部分展开：第一部分是WebAssembly的标准发展；第二部分和第三部分会分别介绍语言特性、字节码与内存模型；接下来第四部分则是程序的控制流与函数调用；第五部分会带大家了解类型系统与内存垃圾回收；第六部分会讲解模块的组件模型；最后一部分会介绍WASI与字节码联盟的情况。
 
