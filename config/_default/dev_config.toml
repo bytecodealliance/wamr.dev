@@ -64,6 +64,7 @@ rel  = "sitemap"
 [permalinks]
   blog = "/blog/:title/"
   events = "/events/:title/"
+  resources = "/resources/"
 
 [minify.tdewolff.html]
   keepWhitespace = false

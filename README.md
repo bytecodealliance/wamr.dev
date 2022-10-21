@@ -70,9 +70,9 @@ All the blogs should put under `content/en/blog/`
   # submit
   ```
 
-#### Markdown headers
+#### Markdown front matter
 
-Hugo use some metadata in the header of every markdown file to get the article information, please ensure your index.md has the following content at the front:
+Hugo use markdown front matter to get the article information, please ensure your index.md has the following content at the front:
 
 ``` bash
 ---
@@ -114,6 +114,10 @@ An event require these two additional fields in the markdown header:
 - `event_location`, the event location
 
 There is no format rule, the raw string will be displayed on the final page.
+
+### Add a resource
+
+Just add the resource link to [content/en/resources/index.md](./content/en/resources/index.md)
 
 ### Site development
 

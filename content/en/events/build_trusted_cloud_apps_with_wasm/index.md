@@ -12,7 +12,7 @@ tags: ['Cloud', 'TEE']
 contributors: ['Wang Xin']
 pinned: false
 homepage: false
-event_date: "2021/5/15"
+event_date: "2021/5/4"
 event_location: "Virtual Event (Cloud Native Wasm Day)"
 ---
 
