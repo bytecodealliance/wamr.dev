@@ -1,6 +1,6 @@
 ---
-title: "Debugging wasm app with WAMR"
-description: "Debugging WebAssembly apps with WAMR"
+title: "WAMR source debugging basic"
+description: "WAMR source debugging basic"
 excerpt: "Debugging takes an important part in application development, WAMR's source debugging feature is ready to use now🎉"
 date: 2022-10-15T14:23:03+08:00
 lastmod: 2022-10-15T14:23:03+08:00
@@ -329,31 +329,7 @@ Everything ready!🍻 Now we can start debugging the application.
 
 Now we have tried some common used features of debugger, but it's finished by command line. **Is there a more efficient way?**
 
-**Of course!**
-
-## Debugging with VSCode
-
-VSCode's flexible extension system make it very easy to integrate any debuggers to its UI, we have developed a VSCode extension to provide some simple project management functionality, and of cause, including the debugging feature.
-
-1. Build the extension from source
-
-    Please follow this [document](https://github.com/bytecodealliance/wasm-micro-runtime/tree/main/test-tools/wamr-ide) to build the extension package.
-
-    > We are planning to automatically publish this extension by GitHub action, once finished, this step is not necessary.
-
-2. Install the `.vsix` file from VSCode
-
-    ![](install_vsix.png)
-
-Now, enjoy the VSCode's debugging session! This video demonstrates the basic usage of the extension.
-
-{{< video mp4-src="debug_demo.mp4" >}}
-
-<video width="100%" height="auto" controls>
-    <source src="debug_demo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-
+**Of course!** See: [Debugging wasm with VSCode]({{< ref "/blog/Debugging_wasm_with_vscode" >}} "Debugging wasm with VSCode")!
 
 ## Remote debugging
 
