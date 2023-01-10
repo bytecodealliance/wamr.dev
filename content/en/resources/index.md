@@ -9,6 +9,8 @@ images: []
 
 ##### EN
 
+- [Performance of WebAssembly runtimes in 2023](https://00f.net/2023/01/04/webassembly-benchmark-2023/)
+
 - [Introducing the Disney+ Application Development Kit (ADK)](https://medium.com/disney-streaming/introducing-the-disney-application-development-kit-adk-ad85ca139073)
 
 - [How Prime Video updates its app for more than 8,000 device types](https://www.amazon.science/blog/how-prime-video-updates-its-app-for-more-than-8-000-device-types)
