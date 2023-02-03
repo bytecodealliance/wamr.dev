@@ -16,11 +16,11 @@
   <div class="col">
     <div class="card" id="event_card">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
           {{- .Scratch.Set "fillImage" "auto" -}}
           {{ partial "content/event-card-image.html" . }}
         </div>
-        <div class="col-md-10">
+        <div class="col-md-11">
           <div class="card-body">
             <article>
               <h2 class="h3"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
