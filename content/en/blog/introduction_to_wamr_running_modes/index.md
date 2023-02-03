@@ -41,8 +41,6 @@ When you use WAMR in your products, there are a few things that should be consid
 
 Except that the Fast Interpreter can't co-exist with other execution engines in a software binary, all other execution engines can be built into single software at any combination.
 
-> Note: Classic Interpreter, as a foundation for LLVM JIT and Fast JIT, will be automatically included if you choose to include one of JIT execution engines
-
 WAMR offers several CMake cache variables for the compilation control of the execution engines:
 
 | Execution Engine        | CMake cache variable |
@@ -50,19 +48,16 @@ WAMR offers several CMake cache variables for the compilation control of the exe
 |  AOT                | WAMR_BUILD_AOT=1 |
 |  Classic Interpreter | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_INTERP=0|
 |  Fast Interpreter | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_INTERP=1  |
-|  LLVM JIT         | WAMR_BUILD_INTERP=1, WAMR_BUILD_JIT=1 |
-|  Fast JIT    | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_JIT=1 |
+|  LLVM JIT         | WAMR_BUILD_JIT=1 |
+|  Fast JIT    | WAMR_BUILD_FAST_JIT=1 |
+
+> Note: Building LLVM JIT and Fast JIT will automatically include the Classic Interpreter, since they have dependence on CI. It means when WAMR_BUILD_JIT or WAMR_BUILD_FAST_JIT is enabled for CMAKE, WAMR_BUILD_INTERP is turned on automatically.
 
 The example of CMake build command below compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into the runtime binary.
   ```sh
   cmake -DWAMR_BUILD_INTERP=1 -DWAMR_BUILD_JIT=1 -DWAMR_BUILD_FAST_JIT=1 -B build
   ```
 
-**The default Execution Engine when compiling multiple Engines into binary:**  
-
-1. When you compile all three execution engines: the JIT layers tier-up on the fly feature is automatically on; firstly, it starts on Fast JIT mode, then gradually switch to more efficient LLVM JIT mode.
-
-2. When you compile one of the JIT execution engines, and with either explicitly or implicitly included Classic Interpreter: the JIT execution engine will be chosen as the default Execution Engine.
 
 ### Control the execution mode 
 
@@ -98,9 +93,13 @@ Notes:
 
 **The priority of choosing running mode:**  
 1. User set module instance running mode
-2. User set default running mode
-3. Compiled default running mode
-
+2. User set default running mode of the whole runtime
+3. If user didn't set at runtime or instance levels, following order will be used for selection:  
+    (1) The JIT layers tier-up on the fly if both JIT layers available  
+    (2) LLVM JIT execution if avaialable  
+    (3) Fast JIT execution if avaialable  
+    (4) Interpreter  
+    
 **A simple usage of APIs:**
 
 ```C
