@@ -51,7 +51,7 @@ WAMR offers several CMake cache variables for the compilation control of the exe
 |  LLVM JIT         | WAMR_BUILD_JIT=1 |
 |  Fast JIT    | WAMR_BUILD_FAST_JIT=1 |
 
-> Note: Building LLVM JIT and Fast JIT will automatically include the Classic Interpreter, since they have dependence on CI. It means when WAMR_BUILD_JIT or WAMR_BUILD_FAST_JIT is enabled for CMAKE, WAMR_BUILD_INTERP is turned on automatically.
+> Note: Building LLVM JIT and Fast JIT will automatically include the Classic Interpreter since they depend on CI. It means when WAMR_BUILD_JIT or WAMR_BUILD_FAST_JIT is enabled for CMAKE, WAMR_BUILD_INTERP has turned on automatically.
 
 The example of CMake build command below compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into the runtime binary.
   ```sh
@@ -94,10 +94,10 @@ Notes:
 **The priority of choosing running mode:**  
 1. User set module instance running mode
 2. User set default running mode of the whole runtime
-3. If user didn't set at runtime or instance levels, following order will be used for selection:  
-    (1) The JIT layers tier-up on the fly if both JIT layers available  
-    (2) LLVM JIT execution if avaialable  
-    (3) Fast JIT execution if avaialable  
+3. If the user didn't set it at runtime or instance levels, the following order will be used for the selection:  
+    (1) The JIT layers tier-up on the fly if both JIT layers are available  
+    (2) LLVM JIT execution, if available  
+    (3) Fast JIT execution, if available  
     (4) Interpreter  
     
 **A simple usage of APIs:**
