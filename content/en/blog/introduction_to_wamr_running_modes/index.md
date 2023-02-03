@@ -19,7 +19,7 @@ homepage: false
 Usually, a WebAssembly module can be executed in either interpreter, Just-In-Time (JIT), or Ahead-Of-Time (AOT) compilation mode, and the choice can be based on the preference for execute performance, resource, etc.   
 
 WAMR supports all three modes and even more:
-- **AOT**:  WAMR AOT helps to achieve nearly native speed, very **small footprint**, and **quick startup**. Use the wamrc compiler to compile wasm file to the AOT file, and then run it iwasm vmcore.
+- **AOT**:  WAMR AOT helps to achieve nearly native speed, very **small footprint**, and **quick startup**. Use the wamrc compiler to compile wasm file to the AOT file, and then run it on iwasm vmcore.
 - **Interpreter**: Small footprint, small memory consumption, and relatively slow. WAMR offers two interpreters:
   - Classic Interpreter (CI): A textbook implementation of Wasm interpreter. It is currently needed for supporting source debugging.
   - Fast Interpreter (FI): Precompile the Wasm opcode to internal opcode and runs ~2X faster than the classic interpreter, but it consumes a bit more memory than CI.
@@ -39,7 +39,11 @@ When you use WAMR in your products, there are a few things that should be consid
 
 ### Compile the engines
 
-Except that The fast interpreter and classic can't co-exist in a software binary, all other execution engines can be built into single software at any combination. WAMR offers several CMake cache variables for the compilation control of the execution engines:
+Except that the Fast Interpreter can't co-exist with other execution engines in a software binary, all other execution engines can be built into single software at any combination.
+
+> Note: Classic Interpreter, as a foundation for LLVM JIT and Fast JIT, will be automatically included if you choose to include one of JIT execution engines
+
+WAMR offers several CMake cache variables for the compilation control of the execution engines:
 
 | Execution Engine        | CMake cache variable |
 |     -----------     |     -----------      |
@@ -53,7 +57,13 @@ An example of a CMake build command:
   ```sh
   cmake -DWAMR_BUILD_INTERP=1 -DWAMR_BUILD_JIT=1 -DWAMR_BUILD_FAST_JIT=1 -B build
   ```
-  The above command compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into your binary, allowing you to choose between them at execution time.
+  The above command compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into your binary.
+
+**The default Execution Engine when compiling multiple Engines into binary:**  
+
+1. When you compile all three execution engines: the JIT layers tier-up on the fly feature is automatically on; firstly, it starts on Fast JIT mode, then gradually switch to more efficient LLVM JIT mode.
+
+2. When you compile one of the JIT execution engines, and with either explicitly or implicitly included Classic Interpreter: the JIT execution engine will be chosen as the default Execution Engine.
 
 ### Control the execution mode 
 
@@ -82,7 +92,7 @@ The software that embeds the WAMR can fully control what execution mode for a lo
         Mode_Multi_Tier_JIT, // multi-tier jit
     } RunningMode;
     ```  
-Notes: the running mode is supported only when the related execution engine is built into the binary. The `Mode_Multi_Tier_JIT` mode is supported only when both Fast JIT and LLVM JIT are available in the runtime software.
+> Note: the running mode is supported only when the related execution engine is built into the binary. The `Mode_Multi_Tier_JIT` mode is supported only when both Fast JIT and LLVM JIT are available in the runtime software.
 
 **The priority of choosing running mode:**  
 1. User set module instance running mode
@@ -119,7 +129,7 @@ wasm_runtime_call_wasm(exec_env, b_func, 1, wasm_argv);
 
 ## Try out iwasm from WAMR binary release
 
-If you want to have a quick try, it would be a good option to download the WAMR binary release and start the iwasm command.
+If you want to have a quick try, it would be a good option to download the WAMR from [binary release](https://github.com/bytecodealliance/wasm-micro-runtime/releases) and start the iwasm command.
 
 There are four command line options to control the running modes of iwasm:
 - `--interp`: run iwasm in class interpreter mode
