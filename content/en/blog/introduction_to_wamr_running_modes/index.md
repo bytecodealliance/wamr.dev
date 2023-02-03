@@ -39,7 +39,11 @@ When you use WAMR in your products, there are a few things that should be consid
 
 ### Compile the engines
 
-All the WAMR execution engines can be built into single software at any combination with the limits that the fast interpreter and classic can't co-exist in a software binary, and the JIT has dependence on the interpreter. WAMR offers several CMake cache variables for the compilation control of the execution engines:
+Except that the Fast Interpreter can't co-exist with other execution engines in a software binary, all other execution engines can be built into single software at any combination.
+
+> Note: Classic Interpreter, as a foundation for LLVM JIT and Fast JIT, will be automatically included if you choose to include one of JIT execution engines
+
+WAMR offers several CMake cache variables for the compilation control of the execution engines:
 
 | Execution Engine        | CMake cache variable |
 |     -----------     |     -----------      |
