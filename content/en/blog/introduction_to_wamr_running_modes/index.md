@@ -39,21 +39,25 @@ When you use WAMR in your products, there are a few things that should be consid
 
 ### Compile the engines
 
-All the WAMR execution engines can be built into single software at any combination with the limits that the fast interpreter and classic can't co-exist in a software binary, and the JIT has dependence on the interpreter. WAMR offers several CMake cache variables for the compilation control of the execution engines:
+Except that the Fast Interpreter can't co-exist with other execution engines in a software binary, all other execution engines can be built into single software at any combination.
+
+WAMR offers several CMake cache variables for the compilation control of the execution engines:
 
 | Execution Engine        | CMake cache variable |
 |     -----------     |     -----------      |
 |  AOT                | WAMR_BUILD_AOT=1 |
 |  Classic Interpreter | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_INTERP=0|
 |  Fast Interpreter | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_INTERP=1  |
-|  LLVM JIT         | WAMR_BUILD_INTERP=1, WAMR_BUILD_JIT=1 |
-|  Fast JIT    | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_JIT=1 |
+|  LLVM JIT         | WAMR_BUILD_JIT=1 |
+|  Fast JIT    | WAMR_BUILD_FAST_JIT=1 |
+
+> Note: Building LLVM JIT and Fast JIT will automatically include the Classic Interpreter since they depend on CI. It means when WAMR_BUILD_JIT or WAMR_BUILD_FAST_JIT is enabled for CMAKE, WAMR_BUILD_INTERP will be turned on automatically.
 
 The example of CMake build command below compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into the runtime binary.
   ```sh
   cmake -DWAMR_BUILD_INTERP=1 -DWAMR_BUILD_JIT=1 -DWAMR_BUILD_FAST_JIT=1 -B build
   ```
- 
+
 
 ### Control the execution mode 
 
@@ -89,9 +93,13 @@ Notes:
 
 **The priority of choosing running mode:**  
 1. User set module instance running mode
-2. User set default running mode
-3. Compiled default running mode
-
+2. User set default running mode of the whole runtime
+3. If the user didn't set it at runtime or instance levels, the following order will be used for the selection:  
+    (1) The JIT layers tier-up on the fly if both JIT layers are available  
+    (2) LLVM JIT execution, if available  
+    (3) Fast JIT execution, if available  
+    (4) Interpreter  
+    
 **A simple usage of APIs:**
 
 ```C
@@ -122,11 +130,11 @@ wasm_runtime_call_wasm(exec_env, b_func, 1, wasm_argv);
 
 ## Try out iwasm from WAMR binary release
 
-If you want to have a quick try, it would be a good option to download the WAMR binary release and start the iwasm command.
+If you want to have a quick try, it would be a good option to download the WAMR from [binary release](https://github.com/bytecodealliance/wasm-micro-runtime/releases) and start the iwasm command.
 
 There are four command line options to control the running modes of iwasm:
-- `--interp`: run iwasm in class interpreter mode
-- `--fast-jit`: run iwasm in  fast jit mode
+- `--interp`: run iwasm in classic interpreter mode
+- `--fast-jit`: run iwasm in fast jit mode
 - `--llvm-jit`: run iwasm in llvm jit mode
 - `--multi-tier-jit`: run iwasm in multi-tier jit mode
 
