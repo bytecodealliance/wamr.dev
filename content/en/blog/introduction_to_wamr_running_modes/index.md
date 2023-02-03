@@ -28,7 +28,7 @@ WAMR supports all three modes and even more:
   - Fast JIT: A lightweight JIT engine with a small footprint, quick **startup**, yet good performance. Currently, it supports x86-64 arch and Linux/Linux-SGX/MacOS platforms. 
 
 **JIT layers tier-up on the fly**: WAMR supports switching from Fast JIT to LLVM JIT during Wasm execution, which provides both a quick cold start with Fast JIT and excellent performance with LLVM JIT.  
-   [](wamr_jit_tier_up.png)
+   ![](wamr_jit_tier_up.png)
 
 
 ## The considerations of Wasm execution mode 
