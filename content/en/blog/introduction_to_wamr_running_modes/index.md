@@ -19,13 +19,13 @@ homepage: false
 Usually, a WebAssembly module can be executed in either interpreter, Just-In-Time (JIT), or Ahead-Of-Time (AOT) compilation mode, and the choice can be based on the preference for execute performance, resource, etc.   
 
 WAMR supports all three modes and even more:
-- **AOT**:  WAMR AOT helps to achieve nearly native speed, very **small footprint**, and **quick startup**. Use the wamrc compiler to compile wasm file to the AOT file, and then run it iwasm vmcore.
+- **AOT**:  WAMR AOT helps to achieve nearly native speed, very **small footprint**, and **quick startup**. Use the wamrc compiler to compile wasm file to the AOT file, and then run it on iwasm vmcore.
 - **Interpreter**: Small footprint, small memory consumption, and relatively slow. WAMR offers two interpreters:
-  - Classic Interpreter (CI): A textbook implementation of Wasm interpreter. It is currently needed for supporting source debugging.
-  - Fast Interpreter (FI): Precompile the Wasm opcode to internal opcode and runs ~2X faster than the classic interpreter, but it consumes a bit more memory than CI.
+  - **Classic Interpreter (CI)**: A textbook implementation of Wasm interpreter. It is currently needed for supporting source debugging.
+  - **Fast Interpreter (FI)**: Precompile the Wasm opcode to internal opcode and runs ~2X faster than the classic interpreter, but it consumes a bit more memory than CI.
 - **JIT**: Run Wasm at nearly native speed yet keeps Wasm as distribution media which is platform-agnostic. The cost is compilation during execution. WAMR supports two JIT layers:
-  - LLVM JIT: Based on LLVM framework and offer the best execution **performance**. Its cost is the longer compilation time.
-  - Fast JIT: A lightweight JIT engine with a small footprint, quick **startup**, yet good performance. Currently, it supports x86-64 arch and Linux/Linux-SGX/MacOS platforms. 
+  - **LLVM JIT**: Based on LLVM framework and offer the best execution **performance**. Its cost is the longer compilation time.
+  - **Fast JIT**: A lightweight JIT engine with a small footprint, quick **startup**, yet good performance. Currently, it supports x86-64 arch and Linux/Linux-SGX/MacOS platforms. 
 
 **JIT layers tier-up on the fly**: WAMR supports switching from Fast JIT to LLVM JIT during Wasm execution, which provides both a quick cold start with Fast JIT and excellent performance with LLVM JIT.  
    ![](wamr_jit_tier_up.png)
@@ -39,7 +39,7 @@ When you use WAMR in your products, there are a few things that should be consid
 
 ### Compile the engines
 
-Except that The fast interpreter and classic can't co-exist in a software binary, all other execution engines can be built into single software at any combination. WAMR offers several CMake cache variables for the compilation control of the execution engines:
+All the WAMR execution engines can be built into single software at any combination with the limits that the fast interpreter and classic can't co-exist in a software binary, and the JIT has dependence on the interpreter. WAMR offers several CMake cache variables for the compilation control of the execution engines:
 
 | Execution Engine        | CMake cache variable |
 |     -----------     |     -----------      |
@@ -49,11 +49,11 @@ Except that The fast interpreter and classic can't co-exist in a software binary
 |  LLVM JIT         | WAMR_BUILD_INTERP=1, WAMR_BUILD_JIT=1 |
 |  Fast JIT    | WAMR_BUILD_INTERP=1, WAMR_BUILD_FAST_JIT=1 |
 
-An example of a CMake build command:
+The example of CMake build command below compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into the runtime binary.
   ```sh
   cmake -DWAMR_BUILD_INTERP=1 -DWAMR_BUILD_JIT=1 -DWAMR_BUILD_FAST_JIT=1 -B build
   ```
-  The above command compiles the Classic Interpreter, LLVM JIT, and Fast JIT Execution engine into your binary, allowing you to choose between them at execution time.
+ 
 
 ### Control the execution mode 
 
