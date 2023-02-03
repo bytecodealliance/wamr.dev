@@ -76,7 +76,7 @@ The software that embeds the WAMR can fully control what execution mode for a lo
 - definition of running mode:
     ```C
     typedef enum RunningMode{
-        Mode_Interp = 1,     // classic interpreter
+        Mode_Interp = 1,     // interpreter
         Mode_Fast_JIT,       // fast jit
         Mode_LLVM_JIT,       // llvm jit
         Mode_Multi_Tier_JIT, // multi-tier jit
