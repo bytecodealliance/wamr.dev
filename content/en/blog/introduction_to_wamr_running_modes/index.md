@@ -81,13 +81,16 @@ The software that embeds the WAMR can fully control what execution mode for a lo
 - definition of running mode:
     ```C
     typedef enum RunningMode{
-        Mode_Interp = 1,     // classic interpreter
+        Mode_Interp = 1,     // interpreter
         Mode_Fast_JIT,       // fast jit
         Mode_LLVM_JIT,       // llvm jit
         Mode_Multi_Tier_JIT, // multi-tier jit
     } RunningMode;
     ```  
-> Note: the running mode is supported only when the related execution engine is built into the binary. The `Mode_Multi_Tier_JIT` mode is supported only when both Fast JIT and LLVM JIT are available in the runtime software.
+Notes: 
+1. the running mode is supported only when the related execution engine is built into the binary. 
+2. The `Mode_Multi_Tier_JIT` enables tier-up from Fast JIT to LLVM JIT. It is supported only when both Fast JIT and LLVM JIT are available in the runtime software.
+3. The selection of fast interpreter and classic interpreter is determined in compilation time, since only one interpreter can be built into the binary.
 
 **The priority of choosing running mode:**  
 1. User set module instance running mode
