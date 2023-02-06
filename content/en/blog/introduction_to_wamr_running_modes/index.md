@@ -28,7 +28,7 @@ WAMR supports all three modes and even more:
   - **Fast JIT**: A lightweight JIT engine with a small footprint, quick **startup**, yet good performance. Currently, it supports x86-64 arch and Linux/Linux-SGX/MacOS platforms. 
 
 **JIT layers tier-up on the fly**: WAMR supports switching from Fast JIT to LLVM JIT during Wasm execution, which provides both a quick cold start with Fast JIT and excellent performance with LLVM JIT.  
-   ![](wamr_jit_tier_up.png)
+![](wamr_jit_tier_up.png)
 
 
 ## The considerations of Wasm execution mode 
@@ -88,14 +88,14 @@ The software that embeds the WAMR can fully control what execution mode for a lo
     } RunningMode;
     ```  
 Notes: 
-1. the running mode is supported only when the related execution engine is built into the binary. 
-2. The `Mode_Multi_Tier_JIT` enables tier-up from Fast JIT to LLVM JIT. It is supported only when both Fast JIT and LLVM JIT are available in the runtime software.
-3. The selection of fast interpreter and classic interpreter is determined in compilation time, since only one interpreter can be built into the binary.
+1. The running mode is supported only when the underlying execution engine is built into the binary. 
+2. The `Mode_Multi_Tier_JIT` enables tier-up from Fast JIT to LLVM JIT. It is supported only when both Fast JIT and LLVM JIT are available.
+3. The selection between fast interpreter and classic interpreter is determined at compilation time, since only one interpreter can be built into the binary.
 
 **The priority of choosing running mode:**  
-1. User set module instance running mode
-2. User set default running mode of the whole runtime
-3. If the user didn't set it at runtime or instance levels, the following order will be used for the selection:  
+1. User set the mode of a module instance 
+2. User set the default mode of the whole runtime
+3. If the user didn't set it at runtime or instance levels, the following selection order will be used:  
     (1) The JIT layers tier-up on the fly if both JIT layers are available  
     (2) LLVM JIT execution, if available  
     (3) Fast JIT execution, if available  
