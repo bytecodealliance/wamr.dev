@@ -1,3 +1,18 @@
+@font-face {
+  font-family: IBMPlexSans;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    // Google Fonts Jost
+    local("IBMPlexSans Regular Regular"),   // Full Name
+    local("IBMPlexSans-Regular"),           // PostScript name
+    // indestructible Jost*
+    local("IBMPlexSans* Book"),
+    local("IBMPlexSans-Book"),
+    url("fonts/vendor/IBM_Plex_Sans/IBMPlexSans-Regular.ttf") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 /* jost-regular - latin */
 @font-face {
   font-family: Jost;
