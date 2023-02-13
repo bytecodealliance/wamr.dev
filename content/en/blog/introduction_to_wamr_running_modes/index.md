@@ -131,11 +131,11 @@ wasm_runtime_call_wasm(exec_env, b_func, 1, wasm_argv);
 
 ## Try out iwasm from WAMR binary release
 
-If you want to have a quick try, it would be a good option to download the WAMR from [binary release](https://github.com/bytecodealliance/wasm-micro-runtime/releases) and start the iwasm command.
+> Note: Release version before(including) 1.1.2 don't have this feature.
 
-> Note: release version before(including) 1.1.2 don't have this feature.
+Since release version 1.2.0(**incoming**), if you want to have a quick try, it would be a good option to download the WAMR from the [binary release](https://github.com/bytecodealliance/wasm-micro-runtime/releases) and start the iwasm command.
 
-Alternative way to try it is to compile iwasm directly, use the following commands to compile `iwasm`:
+An Alternative way to try it is to compile iwasm directly, use the following commands to compile `iwasm`:
 
 ```sh
 # in directory {WAMR Directory}/product-mini/platforms/{your platform}
