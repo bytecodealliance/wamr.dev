@@ -131,7 +131,18 @@ wasm_runtime_call_wasm(exec_env, b_func, 1, wasm_argv);
 
 ## Try out iwasm from WAMR binary release
 
-If you want to have a quick try, it would be a good option to download the WAMR from [binary release](https://github.com/bytecodealliance/wasm-micro-runtime/releases) and start the iwasm command.
+> Note: Release version before(including) 1.1.2 doesn't have this feature.
+
+Since the release version 1.2.0(**upcoming**), if you want to have a quick try, it would be a good option to download the WAMR from the [binary release](https://github.com/bytecodealliance/wasm-micro-runtime/releases) and start the iwasm command.
+
+An alternative way to try is to compile iwasm directly, use the following commands to compile `iwasm`:
+
+```sh
+# in directory {WAMR Directory}/product-mini/platforms/{your platform}
+mkdir -p build
+cmake -DWAMR_BUILD_JIT=1 -DWAMR_BUILD_FAST_JIT=1 -B build
+cmake --build build
+```
 
 There are four command line options to control the running modes of iwasm:
 - `--interp`: run iwasm in classic interpreter mode
