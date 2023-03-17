@@ -44,14 +44,14 @@ WAMR supports two heap types: **wasi-heap** and **host-managed-heap**.
 ## WASI heap
 If a Wasm module is built with WASI-LIBC, the `wasi-heap` will created and managed by the memory allocator provided by the wasi-libc.   
 
-Scenario 1: When the Wasm code call malloc/free, wasi-libc memory allocator will operate on the `wasi-heap`.  
+Scenario 1: When the Wasm code calls malloc/free, wasi-libc memory allocator will operate on the `wasi-heap`.  
 
 Scenario 2: If the native calls `wasm_runtime_module_malloc`, it will call the wasi-libc functions `malloc/free`. Note: this is only supported when the Wasm module exports functions `malloc/free`.  
 
 ![](wasi_libc.excalidraw.png)
 
 ## Host managed heap
-The host-managed-heap is normally required for either situation below:
+The host-managed-heap (formerly called app-heap) is normally required for either situation below:
 1. Wasm module imports malloc/free (usually caused by app build without WASI, like for embedded)
 2. Native and Wasm need to share data through buffer but the Wasm module has no `export` of malloc/free for any reason  
 
