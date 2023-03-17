@@ -19,7 +19,7 @@ The linear memory is a contiguous, mutable array of raw bytes. For most compiler
 - For wasi-sdk, the initial/max size can be specified with -Wl,--initial-memory=n1,--max-memory=n2
 - For emsdk, the initial/max size can be specified with -s INITIAL_MEMORY=n1 -s MAXIMUM_MEMORY=n2 -s ALLOW_MEMORY_GROWTH=1 or -s TOTAL_MEMORY=n
 - For asc, they can be specified with --initialMemory and --maximumMemory flags  
-![](./linear_mem.excalidraw.png)
+![](linear_mem.excalidraw.png)
 
 **Data area**: the size is determined by the compiler like wasi-sdk and the its value is provided in the Wasm GLOBAL `__data_end`.  
 
@@ -48,7 +48,7 @@ Scenario 1: When the Wasm code call malloc/free, wasi-libc memory allocator will
 
 Scenario 2: If the native calls `wasm_runtime_module_malloc`, it will call the wasi-libc functions `malloc/free`. Note: this is only supported when the Wasm module exports functions `malloc/free`.  
 
-![](./wasi_libc.excalidraw.png)
+![](wasi_libc.excalidraw.png)
 
 ## Host managed heap
 The host-managed-heap is normally required for either situation below:
@@ -66,4 +66,4 @@ Scenario 1: When the Wasm code call malloc/free, it will go to the imported nati
 Scenario 2: If the native calls `wasm_runtime_module_malloc`, it will also call the ems memory allocator to operate the host-managed-heap.   
 
 
-![](./host_managed_heap.excalidraw.png)
+![](host_managed_heap.excalidraw.png)
