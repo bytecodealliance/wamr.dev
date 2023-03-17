@@ -55,13 +55,15 @@ The host-managed-heap is normally required for either situation below:
 1. Wasm module imports malloc/free (usually caused by app build without WASI, like for embedded)
 2. Native and Wasm need to share data through buffer but the Wasm module has no `export` of malloc/free for any reason  
 
-The creation of host-managed-heap is done through setting the parameter `default_stack_size` to a non-zero value in the instantiation.
+The creation of host-managed-heap is done through pass non-zero value to the parameter `host_managed_heap_size` in the module instantiation call as below.
 ```
-module_inst = wasm_runtime_instantiate(module, default_stack_size, host_managed_heap_size, error_buf, sizeof(error_buf));
+module_inst = wasm_runtime_instantiate(module, default_stack_size, 
+                                       host_managed_heap_size, 
+                                       error_buf, sizeof(error_buf));
 ```
-Once the host-managed-heap is created, it will be managed by the `ems` that is a tiny memory allocator provided by WAMR.  
+Once the `host-managed-heap` is created, it will be managed by the `ems` that is a tiny memory allocator provided by WAMR.  
 
-Scenario 1: When the Wasm code call malloc/free, it will go to the imported native functions `malloc_wrapper/free_wrapper`.  These two wrapper functions then call the malloc/free of `ems` . 
+Scenario 1: When the Wasm code call malloc/free, it will go to the imported native functions `malloc_wrapper/free_wrapper`.  These two wrapper functions then call the malloc/free of `ems`. 
 
 Scenario 2: If the native calls `wasm_runtime_module_malloc`, it will also call the ems memory allocator to operate the host-managed-heap.   
 
