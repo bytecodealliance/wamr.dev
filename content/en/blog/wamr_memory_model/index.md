@@ -70,4 +70,4 @@ The WAMR runtime  memory:
 - **WASI-NN context**
 
 # Execution environment
-- **stack buffer**: the buffer is used for the Wasm function calling stack. It can be provided by the host caller or let the runtime handle the memory allocation. refer to [Understand the WAMR stacks](../understand_wamr_stacks/)
+- **stack buffer**: the buffer is used for the Wasm function calling stack. It can be provided by the host caller or let the runtime handle the memory allocation. refer to [Understand the WAMR stacks](../understand-the-wamr-stacks/)
