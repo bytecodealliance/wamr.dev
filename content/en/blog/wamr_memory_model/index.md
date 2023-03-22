@@ -20,7 +20,7 @@ homepage: false
 According to the lifecycle and associated functionalities, we put the memory used in WAMR into four categories:
 - **runtime memory**:  memory used by runtime globally
 - **Wasm module memory**: memory used for a loaded Wasm module, freed when the module is unloaded
-- **Wams module instance memory**: memory used for a Wasm module instance, freed when the instance is destroyed
+- **Wasm module instance memory**: memory used for a Wasm module instance, freed when the instance is destroyed
 - **Execution environment memory**: memory use for execution of Wasm function from a Wasm module instance. It is provided by the host caller, and no longer needed after the execution is finished.
 
 ![](wamr_object_classify.excalidraw.png)
@@ -28,10 +28,9 @@ According to the lifecycle and associated functionalities, we put the memory use
 # Memory allocators
 WAMR supports a few modes for managing the memory:
 - **Alloc_With_Pool**: The mode restricts all the memory used by wamr in a fixed memory region that was provided by the host during initiating the WAMR runtime. All the memory categories are allocated inside the memory region by using WAMR built-in memory allocator `ems`.    
-
     ![](pool_mode.excalidraw.png)  
 
-    Runtime initializaion sample:  
+    Runtime initialization sample:  
     ```C
     /* all the runtime memory allocations are retricted in the global_heap_buf array */
     static char global_heap_buf[512 * 1024];
@@ -71,4 +70,4 @@ The WAMR runtime  memory:
 - **WASI-NN context**
 
 # Execution environment
-- **stack buffer**: the buffer is used for the Wasm function calling stack. It can be provided by the host caller or let the runtime handle the memory allocation. refer to [Understand the WAMR stacks](../understand_wamr_stack/)
+- **stack buffer**: the buffer is used for the Wasm function calling stack. It can be provided by the host caller or let the runtime handle the memory allocation. refer to [Understand the WAMR stacks](../understand_wamr_stacks/)
