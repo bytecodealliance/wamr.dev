@@ -53,14 +53,14 @@ The WAMR runtime  memory:
 - **thread cluster**: The memory used for library pthread and wasi-thread
 
 # Wasm module memory
-- **WASM Module structure**: WAMR maintains the module data using C struct [`WASMModule`](https://github.com/bytecodealliance/wasm-micro-runtime/blob/d75cb3224f7c8a6565937a6389936a1a2160fc59/core/iwasm/interpreter/wasm.h#LL407C8-L407C19). During initializing `WASMModule`, there are some sub data structures allocated for globals, memory, tables, imports, exports etc and referred by the fields of `WASMModule`. 
+- **WASM Module structure**: WAMR maintains the module data using C struct ["WASMModule"](https://github.com/bytecodealliance/wasm-micro-runtime/blob/d75cb3224f7c8a6565937a6389936a1a2160fc59/core/iwasm/interpreter/wasm.h#LL407C8-L407C19). During initializing `WASMModule`, there are some sub data structures allocated for globals, memory, tables, imports, exports etc and referred by the fields of `WASMModule`. Refer to [vmcore internal architecture](https://github.com/bytecodealliance/wasm-micro-runtime/blob/main/core/iwasm/doc/wasm_function.MD) for the details.
 - **Wasm file buffer**: The host caller provides the buffer for holding the wasm file content. The runtime will hold this reference during the whole life of Wasm module. After the module is unloaded, it is no longer needed.
 - **Wasm JIT code**: The buffer that runtime allocated for holding the generated machine code by the Just-in-Time compilation.
 - **Wasm AoT code**: The memory pages that runtime map to the AoT file by using mmap().
 - **Wasm pre-compiled bytecode**: the fast interpreter will pre-compile the Wasm bytecode to intenal bytecode format and save it in internally allocates buffer.
 
 # Wasm instance
-- **Module Instance structure**: WAMR maintains the module instance data using C struct [`WASMModuleInstance`](https://github.com/bytecodealliance/wasm-micro-runtime/blob/d75cb3224f7c8a6565937a6389936a1a2160fc59/core/iwasm/interpreter/wasm_runtime.h#L252). 
+- **Module Instance structure**: WAMR maintains the module instance data using C struct ["WASMModuleInstance"](https://github.com/bytecodealliance/wasm-micro-runtime/blob/d75cb3224f7c8a6565937a6389936a1a2160fc59/core/iwasm/interpreter/wasm_runtime.h#L252). 
 - **function data**: contain the function instances and a few pointer arrays that refer to the native function, function type and imported functions
 - **linear memory**: the memory for the linear memory data space and associated information
 - **global data**: the memory for the data of Wasm globals and associated information
