@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WebAssembly Micro Runtime on</title><link>https://bytecodealliance.github.io/wamr.dev/</link><description>Recent content in WebAssembly Micro Runtime on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Copyright (c) 2020-2021 Henk Verlinde</copyright><lastBuildDate>Thu, 06 Oct 2022 08:47:36 +0000</lastBuildDate><atom:link href="https://bytecodealliance.github.io/wamr.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog</title><link>https://bytecodealliance.github.io/wamr.dev/blog/</link><pubDate>Wed, 12 Oct 2022 08:49:55 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/blog/</guid><description/></item><item><title>Resources</title><link>https://bytecodealliance.github.io/wamr.dev/resources/</link><pubDate>Tue, 11 Oct 2022 10:13:29 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/resources/</guid><description>EN # Performance of WebAssembly runtimes in 2023
 Introducing the Disney+ Application Development Kit (ADK)
 How Prime Video updates its app for more than 8,000 device types
+Why WebAssembly Is Perfect for Tiny IoT Devices
 CHN # 基于 WebAssembly 的AIoT应用框架实践
 支付宝五福 AR 玩法及背后的互动引擎—Paladin
-Cube 技术解读 | 支付宝新一代动态化技术架构与选型综述</description></item><item><title>Events</title><link>https://bytecodealliance.github.io/wamr.dev/events/</link><pubDate>Mon, 10 Oct 2022 18:50:29 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/events/</guid><description/></item></channel></rss>
+Cube 技术解读 | 支付宝新一代动态化技术架构与选型综述
+WebAssembly 在工业领域的巨大机遇</description></item><item><title>Events</title><link>https://bytecodealliance.github.io/wamr.dev/events/</link><pubDate>Mon, 10 Oct 2022 18:50:29 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/events/</guid><description/></item></channel></rss>
