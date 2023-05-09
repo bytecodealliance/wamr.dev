@@ -7,9 +7,9 @@ lastmod: 2023-04-21T13:27:38+08:00
 draft: false
 weight: 50
 images: []
-categories: []
+categories: ['introduction']
 tags: []
-contributors: [Li Jiongqiang]
+contributors: ['Li Jiongqiang']
 pinned: false
 homepage: false
 ---
@@ -92,27 +92,39 @@ static_assert(
 
 - (2.2) the size of pointer is different between two worlds
     
-    We can use structure wrapper to solve this problem. The structure wrapper is defined and used by the host program, of which the memory layout is consistent with that of the structure defined and used by Wasm apps.
- 
+    When we transfer structural data from wasm to host, because the size of pointer is diffrent between two worlds, host program accessing members of the structure from linear memory may fail.
+    
+    We need to make the members of the structure accessible in both worlds.
+    
+    The structure shown below use `union` to solve this probelm.
+    
+    For the structure from the wasm linear memory: 
+    * use `uint32_t next_offset` as `struct Node *next` in host program
+    * use `struct Node *next` in wasm apps
+
 
 ```cpp
-// used by the 64 bits host
+// The structure memory layout used by the 64 bits host
 struct Node {
     int data; //4B
     // padding 4B
-    struct Node *next; // 8B
+    union {
+        struct Node *next; // 8B
+        uint32_t next_offset; // 4B
+        uint64_t _padding_64_bits; // 8B
+    }
 };
-
-struct NodeWrapper {
-    int data; //4B
-    uint32_t next; //4B, is an offset
-}
 
 /****************************/
 
-// used by 32 bits Wasm apps
+// The structure memory layout used by 32 bits Wasm apps
 struct Node {
     int data; //4B
-    struct Node *next; // 4B, Wasm pointer actually is a offset
+    // padding 4B
+    union {
+        struct Node *next; // 4B
+        uint32_t next_offset; // 4B
+        uint64_t _padding_64_bits; // 8B
+    }
 };
 ```
