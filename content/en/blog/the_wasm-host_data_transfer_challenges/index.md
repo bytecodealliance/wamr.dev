@@ -1,5 +1,5 @@
 ---
-title: "The wasm-host data transfer: challenges"
+title: "Move the embedded world to WebAssembly : challenges"
 description: ""
 excerpt: ""
 date: 2023-04-24T16:19:14+08:00
@@ -7,9 +7,9 @@ lastmod: 2023-04-24T16:19:14+08:00
 draft: false
 weight: 50
 images: []
-categories: []
+categories: ['introduction']
 tags: []
-contributors: []
+contributors: ['Li Jiongqiang']
 pinned: false
 homepage: false
 ---
@@ -75,7 +75,7 @@ When we use handle, We have transferred the risk of manipulating data and execut
 
 Here are some examples of possible errors.
 
-* Wasm apps may pass a wrong handle value
+* Wasm apps may pass a wrong handle value which can cause safety risks
 * Common memory issues, such as segment fault
 
 #### 3. function callback
@@ -91,7 +91,7 @@ In other words, we need to pass a function pointer that can be directly used by 
 It is similar to the previous situation. But if you can change you code compiled into WASM, using handle as native function pointer may be a good choice.
 
 
-#### 4. Sharing data between multiple nanoapps
+#### 4. Sharing data between multiple wasm apps
 
 Wasm app is unable to access linear memory of other wasm apps. So we can't directly have different wasm apps read and write the shared memory.
 
