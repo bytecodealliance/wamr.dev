@@ -16,7 +16,7 @@ homepage: false
 
 ### Background
 
-I have tried to integrate WASM with CHRE (Context Hub Runtime Environment) at my GitHub repo [cher-wasm](https://github.com/FromLiQg/chre-wasm/tree/wasm), and before that I learned the LVGL (Light and Versatile Graphics Library) samples provided by WAMR. 
+I have tried to integrate WASM with CHRE (Context Hub Runtime Environment) at my GitHub repo [(cher-wasm)](https://github.com/FromLiQg/chre-wasm/tree/wasm), and before that I learned the LVGL (Light and Versatile Graphics Library) samples provided by WAMR. 
 
 CHRE is the Android sensor hub framework where small native applications, called nanoapps, which are executed on a low-power processor and interact with the underlying system through the common CHRE API. My goal was compiling the nanoapps source code into WASM and run them on the WAMR embedded into CHRE.  
 
