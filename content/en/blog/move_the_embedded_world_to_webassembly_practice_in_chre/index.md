@@ -1,5 +1,5 @@
 ---
-title: "Move the embedded world to WebAssembly : practice in CHRE"
+title: "Moving the embedded world to WebAssembly : Practice in CHRE"
 description: ""
 excerpt: ""
 date: 2023-05-16T15:18:38+08:00
@@ -14,17 +14,13 @@ pinned: false
 homepage: false
 ---
 
-This blog will introduce our practice in integrating WASM with CHRE(Context Hub Runtime Environment), which solves some challenges that may also be encountered in other projects.
+I have recently finished my project of moving CHRE NanoApps from native to WebAssembly without changing the application source code. The source code is available in my GitHub repo [cher-wasm](https://github.com/FromLiQg/chre-wasm/tree/wasm).
 
-These challenges mainly focus on data sharing and callback functions.
-
-We will introduce the architecture used in this projects and solutions to specific challenges.
+The major challenges are from Wasm-Host data sharing and function callbacks. This blog will introduce the practice in integrating WASM with CHRE(Context Hub Runtime Environment), and how to some challenges. It should be useful for moving other existing project to Wasm based user applications.
 
 ### 1. The overview of CHRE-WASM
 
-`CHRE` is the software environment where small native applications, called `nanoapp`, execute on a low-power processor and interact with the underlying system through the common `CHRE API`.
-And CHRE is a event-driven model system, maintaining an event queue and distribute events to nanoapps.
-We compile nanoapps into WASM and embed WAMR into CHRE to enable CHRE to run these new WASM nanoapps. 
+`CHRE` is the Android sensor framework where small native applications, called `nanoapp`, execute on a low-power processor and interact with the underlying system through the common `CHRE API`. And CHRE is a event-driven model system, maintaining an event queue and distribute events to nanoapps. We compile nanoapps into WASM and embed WAMR into CHRE to enable CHRE to run these new WASM nanoapps. 
 
 The CHRE framework interacts with a given nanoapp through one of the three nanoapp entry points (`nanoappStart()`, `nanoappHandleEvent()`, and `nanoappEnd()`) or through a callback provided in a prior CHRE API call, and nanoapps interact with the CHRE framework and the underlying system through the CHRE API. 
 
