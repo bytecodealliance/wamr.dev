@@ -1,5 +1,5 @@
 ---
-title: "Move the embedded world to WebAssembly : basics"
+title: "The Wasm-Host sharing data: basics"
 description: ""
 excerpt: ""
 date: 2023-04-21T13:27:38+08:00
@@ -43,7 +43,7 @@ We often need to share data buffer between two worlds, and the data has to be st
 Here are two common approaches to organize the shared data:  
 (1) using serialization, such as json, cbor, and the attribute container by wamr etc. One side does serialization of structured data into the shared buffer, and the other side de-serializes the buffer to its internal data structure. It is a safe way, but with less execution efficiency.  
 
-(2) sharing C structure definition between two world ands use the same memory layout, so that we can directly access members of the structure in both two worlds. It provides high efficiency, but it is not always guaranteed safe since there are a few risks. We are going to introduce a a few methods to ensure safe use of shared C structure defintion.
+(2) sharing C structure definition between two world ands use the same memory layout, so that we can directly access members of the structure in both two worlds. It provides high efficiency, but it is not always guaranteed safe since there are a few risks. We are going to introduce a a few methods to ensure safe use of shared C structure definition.
 
 ### Share C structure definition between two worlds
 
@@ -68,7 +68,7 @@ To solve these potential problems, here are some common methods:
 
 (1) Ensure consistence of the memory layout
 
-To ensure the consistence of the memory layout of stuctures, we can use `static_assert` provided by most compilers.
+To ensure the consistence of the memory layout of structures, we can use `static_assert` provided by most compilers.
 When compiling sources files, no matter compiling host program or Wasm apps, compiler will check these assertion.
 
 ```cpp
@@ -92,11 +92,11 @@ static_assert(
 
 - (2.2) the size of pointer is different between two worlds
     
-    When we transfer structural data from wasm to host, because the size of pointer is diffrent between two worlds, host program accessing members of the structure from linear memory may fail.
+    When we transfer structural data from wasm to host, because the size of pointer is different between two worlds, host program accessing members of the structure from linear memory may fail.
     
     We need to make the members of the structure accessible in both worlds.
     
-    The structure shown below use `union` to solve this probelm.
+    The structure shown below use `union` to solve this problem.
     
     For the structure from the wasm linear memory: 
     * use `uint32_t next_offset` as `struct Node *next` in host program
