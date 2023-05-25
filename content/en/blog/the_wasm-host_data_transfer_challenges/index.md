@@ -1,5 +1,5 @@
 ---
-title: "Move the embedded world to WebAssembly : challenges"
+title: "The Wasm-Host sharing data: challenges"
 description: ""
 excerpt: ""
 date: 2023-04-24T16:19:14+08:00
@@ -16,42 +16,36 @@ homepage: false
 
 ### Background
 
-When we try to integrate WASM with CHRE(Context Hub Rutime Environment) and LVGL(Light and Versatile
-Graphics Library), we meet some challenges in data transferring and sharing.
-The following article will introduce these challenges. 
+I have tried to integrate WASM with CHRE (Context Hub Runtime Environment) at my GitHub repo [cher-wasm](https://github.com/FromLiQg/chre-wasm/tree/wasm), and before that I learned the LVGL (Light and Versatile Graphics Library) samples provided by WAMR. 
 
-CHRE is the software environment where small native applications, called nanoapps, execute on a low-power processor and interact with the underlying system through the common CHRE API. We try to compile nanoapps into WASM and embed WAMR into CHRE to enable CHRE to run these new nanoapps compiled as WASM. 
+CHRE is the Android sensor hub framework where small native applications, called nanoapps, which are executed on a low-power processor and interact with the underlying system through the common CHRE API. My goal was compiling the nanoapps source code into WASM and run them on the WAMR embedded into CHRE.  
 
 ![CHRE with WASM](images/chre_with_wasm.svg)
 
-LVGL is a graphics library to create beautiful UIs for any MCU, MPU and display type. We try to compile LVGL user code into WASM, and the lvgl library is built into the host runtime.
+LVGL is a graphics library to create beautiful UIs for any MCU, MPU and display type. The LVGL samples in WAMR demonstrate LVGL user code being compiled to WASM and performs identifical function across different platforms, while the lvgl library can be built into either Wasm as part of apps or native as part of the host. 
 
 ![LVGL with WASM](images/lvgl_with_wasm.svg)
 
-In these two projects, we need to register native apis of CHRE library and LVGL library for WASM apps to use.
+In the development, a common requirement is we should not change the original library design and original APIs.  
 
-when wasm apps and host program are running, data transferring may occur in two directions: `from host to wasm` and `from wasm to host`.
+In this document, I will share the challenges that I observed in the practices. The possible solutions will be provided in another blog.
 
-Due to issues with memory layout and access permissions, we may encounter some challenges during data transferring.
-
-### Restriction
-In these similar developments, we have a common restriction: we should not change the original library design and original APIs.
 
 ### Challenges
 Here are some classic challenges we face.
 
 We will provide some general solutions for some of them.
 
-#### 1. The data structure is locatecd in the native layer, but need to be used in wasm apps.
+#### 1. The data structure is located in the native layer, but need to be used in wasm apps.
 
 ![Data located in native but used in wasm apps](images/use_native_data_in_wasm.svg)
 
-Because the wasm app in running in a sanboxed environment, the data located in the native layer can't be directly accessed by wasm apps. But here are two solutions.
+Because the wasm app in running in a sandboxed environment, the data located in the native layer can't be directly accessed by wasm apps. But here are two solutions.
 
 solutions:
 
 ##### 1.1 handle
-We can transfer a opaque handle representing a native structure pointer to wasm app, and wasm app will access all fileds of the structure through calling native api, and pass this handle as the native pointer to corresponding native api.
+We can transfer a opaque handle representing a native structure pointer to wasm app, and wasm app will access all fields of the structure through calling native api, and pass this handle as the native pointer to corresponding native api.
 
 ![using handle](images/use_handle.svg)
 
@@ -65,13 +59,13 @@ We can map the memory existing in the naitve layer to the memory existing in the
 
 ##### 2.1 Wasm apps can't use it as pointer to access fields
 
-If we use handle as native structure pointer in wasm apps, then we have a problem in getting fileds of the structure: we have to call native api to get these fields.
+If we use handle as native structure pointer in wasm apps, then we have a problem in getting fields of the structure: we have to call native api to get these fields.
 
-![can't access fileds if using handle](images/fail_to_access_fields_if_using_handle.svg)
+![can't access fields if using handle](images/fail_to_access_fields_if_using_handle.svg)
 
 ##### 2.2 security concern
 
-When we use handle, We have transferred the risk of manipulating data and executing code to the host program， because native code is not executed as WASM in runtime. If an error occurs while processing the handle, the program may crash.
+When we use handle, We have transferred the risk of manipulating data and executing code to the host program, because native code is not executed as WASM in runtime. If an error occurs while processing the handle, the program may crash.
 
 Here are some examples of possible errors.
 
