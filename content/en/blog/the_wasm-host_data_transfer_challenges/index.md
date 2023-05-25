@@ -1,5 +1,5 @@
 ---
-title: "The wasm-host data transfer: challenges"
+title: "Move the embedded world to WebAssembly : challenges"
 description: ""
 excerpt: ""
 date: 2023-04-24T16:19:14+08:00
@@ -7,9 +7,9 @@ lastmod: 2023-04-24T16:19:14+08:00
 draft: false
 weight: 50
 images: []
-categories: []
+categories: ['introduction']
 tags: []
-contributors: []
+contributors: ['Li Jiongqiang']
 pinned: false
 homepage: false
 ---
