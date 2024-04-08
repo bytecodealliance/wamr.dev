@@ -5,4 +5,5 @@ Why WebAssembly Is Perfect for Tiny IoT Devices
 CHN # 基于 WebAssembly 的AIoT应用框架实践
 支付宝五福 AR 玩法及背后的互动引擎—Paladin
 Cube 技术解读 | 支付宝新一代动态化技术架构与选型综述
-WebAssembly 在工业领域的巨大机遇</description></item><item><title>Events</title><link>https://bytecodealliance.github.io/wamr.dev/events/</link><pubDate>Mon, 10 Oct 2022 18:50:29 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/events/</guid><description/></item></channel></rss>
+WebAssembly 在工业领域的巨大机遇</description></item><item><title>Events</title><link>https://bytecodealliance.github.io/wamr.dev/events/</link><pubDate>Mon, 10 Oct 2022 18:50:29 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/events/</guid><description/></item><item><title>User APIs</title><link>https://bytecodealliance.github.io/wamr.dev/apis/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bytecodealliance.github.io/wamr.dev/apis/</guid><description>End User APIs document for WAMR Export APIs:
+wasm export APIs wasm C APIs aot export APIs gc export APIs lib export APIs</description></item></channel></rss>
