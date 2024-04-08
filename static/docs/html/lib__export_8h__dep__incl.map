@@ -1,0 +1,5 @@
+<map id="core/iwasm/include/lib_export.h" name="core/iwasm/include/lib_export.h">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,153,47"/>
+<area shape="rect" id="node2" href="$wasm__export_8h.html" title="This file defines the exported common runtime APIs." alt="" coords="5,95,153,136"/>
+<area shape="rect" id="node3" href="$gc__export_8h.html" title="This file defines the exported GC APIs." alt="" coords="5,184,153,225"/>
+</map>
